@@ -16,7 +16,13 @@ function App() {
           <Route path="/" element={<Navbar isAuthLoading={isAuthLoading}/>}>
           <Route index element={<HomePage/>}/>
           <Route path="login" element={<LoginPage isAuthLoading={isAuthLoading}/>}/>
-          <Route path="registration" element={<RegistrationPage isAuthLoading={isAuthLoading}/>}/>
+          <Route 
+          path="registration" 
+          element={<RegistrationPage 
+            isAuthLoading={isAuthLoading} 
+            setIsAuthLoading={setIsAuthLoading}
+          />}
+          />
         </Route>
         </Routes>
       </header>
