@@ -7,15 +7,20 @@ import Navbar from './Components/NavBar'
 import "./App.css";
 
 function App() {
-  const [isAuthLoading, setIsAuthLoading] = useState()
+  const [isAuthLoading, setIsAuthLoading] = useState(false)
 
   return (
     <div className="App">
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Navbar isAuthLoading={isAuthLoading}/>}>
+          <Route path="/" element={<Navbar isAuthLoading={isAuthLoading}setIsAuthLoading={setIsAuthLoading}/>}>
           <Route index element={<HomePage/>}/>
-          <Route path="login" element={<LoginPage isAuthLoading={isAuthLoading}/>}/>
+          <Route 
+          path="login" 
+          element={<LoginPage 
+          isAuthLoading={isAuthLoading}
+          setIsAuthLoading={setIsAuthLoading}
+          />}/>
           <Route 
           path="registration" 
           element={<RegistrationPage 

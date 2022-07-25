@@ -3,8 +3,8 @@ import { useState } from "react";
 import { loginUser } from "../Auth";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = (props) => {
-  const [userName, setUserName] = useState("");
+const LoginPage = ({ isAuthLoading, setIsAuthLoading}) => {
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const LoginPage = (props) => {
       <h1>LoginPage</h1>
       <label>USER NAME: </label>
       <input
-        value={userName}
+        value={username}
         onChange={(e) => {
           setUserName(e.target.value);
           console.log(setUserName);
@@ -29,12 +29,12 @@ const LoginPage = (props) => {
       ></input>
       <button
         onClick={async () => {
-          props.setIsAuthLoading(true);
+          setIsAuthLoading(true);
           const isUserLoggedIn = await loginUser(
-            props.userName,
-            props.password
+            username,
+            password
           );
-          props.setIsAuthLoading(false);
+          setIsAuthLoading(false);
           if (isUserLoggedIn) {
             navigate("/");
           }

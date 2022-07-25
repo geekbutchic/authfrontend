@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 
 const RegistrationPage = (props) => {
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   return (
@@ -12,7 +12,7 @@ const RegistrationPage = (props) => {
       <h2>Registration Page</h2>
       <label>USER NAME: </label>
       <input
-        value={userName}
+        value={username}
         onChange={(e) => {
           const inputUserName = e.target.value;
           setUserName(inputUserName);
@@ -35,18 +35,18 @@ const RegistrationPage = (props) => {
           props.setIsAuthLoading(true);
           console.log(
             "USERNAME: ",
-            props.username,
+            username,
             "PASSWORD: ",
-            props.password
+            password
           );
           const isUserRegistered = await registerUser(
-            props.username,
-            props.password
+            username,
+            password
           );
           if (isUserRegistered) {
             const isUserLoggedIn = await loginUser(
-              props.username,
-              props.password
+              username,
+              password
             );
             if (isUserLoggedIn) {
               props.setIsAuthLoading(false);
